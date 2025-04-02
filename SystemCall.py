@@ -50,3 +50,42 @@ class SyscallInterface:
         # Create a frame for buttons
         button_frame = tk.Frame(self.root, bg="White")
         button_frame.pack(pady=10)
+        # Create buttons with enhanced appearance
+        self.create_button(button_frame, "Start", self.run)
+        self.create_button(button_frame, "User  Management", self.manage_users)
+        self.create_button(button_frame, "Exit", self.root.quit)
+
+        # Add a footer label
+        footer_label = tk.Label(self.root, text="© 2025 System Call Interface", bg="white", fg="blue", font=("Arial", 10, "italic"))
+        footer_label.pack(side=tk.BOTTOM, pady=10)
+
+        self.root.mainloop()
+
+    def create_button(self, parent, text, command):
+        # Create a frame for the button with rounded corners
+        button_frame = tk.Frame(parent, bg="blue", bd=0, relief="flat")
+        button_frame.pack(side=tk.LEFT, padx=10)
+
+        # Create a button label
+        button_label = tk.Label(button_frame, text=text, bg="#FF4500", fg="white", font=("Arial", 12, "bold"), padx=20, pady=10)
+        button_label.pack()
+
+        # Bind hover effects
+        button_frame.bind("<Enter>", lambda e: button_frame.config(bg="#C70039"))  # Darker red on hover
+        button_frame.bind("<Leave>", lambda e: button_frame.config(bg="#FF4500"))  # Original red
+
+        # Bind click event
+        button_label.bind("<Button-1>", lambda e: command())
+
+    def authenticate_user(self):
+        username = simpledialog.askstring("Username", "Enter username:", parent=self.root)
+        password = simpledialog.askstring("Password", "Enter password:", show='*', parent=self.root)
+        
+        if self.auth.authenticate(username, password):
+            messagebox.showinfo("Authentication", "Authentication successful.", parent=self.root)
+            self.logger.log(f"User  '{username}' authenticated successfully.")
+            return username
+        else:
+            messagebox.showerror("Authentication", "Authentication failed.", parent=self.root)
+            self.logger.log(f"Failed authentication attempt for user '{username}'.")
+            return None
