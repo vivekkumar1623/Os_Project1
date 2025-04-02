@@ -89,3 +89,27 @@ class SyscallInterface:
             messagebox.showerror("Authentication", "Authentication failed.", parent=self.root)
             self.logger.log(f"Failed authentication attempt for user '{username}'.")
             return None
+
+    def perform_syscall(self, username):
+        syscall = simpledialog.askstring("System Call", "Enter system call to perform (e.g., 'read', 'write', 'delete', 'list', 'update', 'info'):", parent=self.root)
+        if syscall == "read":
+            self.simulate_read()
+        elif syscall == "write":
+            self.simulate_write()
+        elif syscall == "delete":
+            self.simulate_delete()
+        elif syscall == "list":
+            self.simulate_list()
+        elif syscall == "update":
+            self.simulate_update()
+        elif syscall == "info":
+            self.simulate_info()
+        else:
+            messagebox.showerror("Error", "Invalid system call.", parent=self.root)
+            self.logger.log(f"Invalid system call '{syscall}' attempted by user '{username}'.")
+
+    def simulate_read(self):
+        messagebox.showinfo("Simulate Read", "Simulating read operation...", parent=self.root)
+        time.sleep(1)  # Simulate time delay
+        messagebox.showinfo("Read Operation", "Read operation completed.", parent=self.root)
+        self.logger.log("Read operation executed.")
