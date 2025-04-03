@@ -162,3 +162,19 @@ class SyscallInterface:
                 else:
                     messagebox.showerror("User  Management", f"User  '{username}' does not exist.", parent=self.root)
                     self.logger.log(f"Failed to remove user '{username}': does not exist.")
+            elif action == "exit":
+                break
+            else:
+                messagebox.showerror("User  Management", "Invalid action. Please enter 'add', 'remove', or 'exit'.", parent=self.root)
+
+    def run(self):
+        while True:
+            username = self.authenticate_user()
+            if username:
+                self.perform_syscall(username)
+            cont = messagebox.askyesno("Continue", "Do you want to perform another syscall?", parent=self.root)
+            if not cont:
+                break
+
+if __name__ == "__main__":
+    syscall_interface = SyscallInterface()
