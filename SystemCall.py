@@ -136,3 +136,29 @@ class SyscallInterface:
         time.sleep(1)  # Simulate time delay
         messagebox.showinfo("Update Operation", "Update operation completed.", parent=self.root)
         self.logger.log("Update operation executed.")
+    def simulate_info(self):
+        messagebox.showinfo("Simulate Info", "Simulating info operation...", parent=self.root)
+        time.sleep(1)  # Simulate time delay
+        messagebox.showinfo("Info Operation", "Info operation completed.", parent=self.root)
+        self.logger.log("Info operation executed.")
+
+    def manage_users(self):
+        while True:
+            action = simpledialog.askstring("User  Management", "Enter 'add' to add a user, 'remove' to remove a user, or 'exit' to go back:", parent=self.root)
+            if action == "add":
+                username = simpledialog.askstring("Add User", "Enter new username:", parent=self.root)
+                password = simpledialog.askstring("Add User", "Enter new password:", show='*', parent=self.root)
+                if self.auth.add_user(username, password):
+                    messagebox.showinfo("User  Management", f"User  '{username}' added successfully.", parent=self.root)
+                    self.logger.log(f"User  '{username}' added.")
+                else:
+                    messagebox.showerror("User  Management", f"User  '{username}' already exists.", parent=self.root)
+                    self.logger.log(f"Failed to add user '{username}': already exists.")
+            elif action == "remove":
+                username = simpledialog.askstring("Remove User", "Enter username to remove:", parent=self.root)
+                if self.auth.remove_user(username):
+                    messagebox.showinfo("User  Management", f"User  '{username}' removed successfully.", parent=self.root)
+                    self.logger.log(f"User  '{username}' removed.")
+                else:
+                    messagebox.showerror("User  Management", f"User  '{username}' does not exist.", parent=self.root)
+                    self.logger.log(f"Failed to remove user '{username}': does not exist.")
