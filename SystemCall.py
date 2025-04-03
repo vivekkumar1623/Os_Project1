@@ -113,3 +113,26 @@ class SyscallInterface:
         time.sleep(1)  # Simulate time delay
         messagebox.showinfo("Read Operation", "Read operation completed.", parent=self.root)
         self.logger.log("Read operation executed.")
+    def simulate_write(self):
+        messagebox.showinfo("Simulate Write", "Simulating write operation...", parent=self.root)
+        time.sleep(1)  # Simulate time delay
+        messagebox.showinfo("Write Operation", "Write operation completed.", parent=self.root)
+        self.logger.log("Write operation executed.")
+
+    def simulate_delete(self):
+        messagebox.showinfo("Simulate Delete", "Simulating delete operation...", parent=self.root)
+        time.sleep(1)  # Simulate time delay
+        messagebox.showinfo("Delete Operation", "Delete operation completed.", parent=self.root)
+        self.logger.log("Delete operation executed.")
+    
+    def simulate_list(self):
+        messagebox.showinfo("Simulate List", "Simulating list operation...", parent=self.root)
+        time.sleep(1)  # Simulate time delay
+        messagebox.showinfo("List Operation", "List operation completed.", parent=self.root)
+        self.logger.log("List operation executed.")
+
+    def simulate_update(self):
+        messagebox.showinfo("Simulate Update", "Simulating update operation...", parent=self.root)
+        time.sleep(1)  # Simulate time delay
+        messagebox.showinfo("Update Operation", "Update operation completed.", parent=self.root)
+        self.logger.log("Update operation executed.")
