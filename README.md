@@ -73,7 +73,7 @@ Acknowledgments
 This application utilizes the Tkinter library for GUI development.
 Logging functionality is provided by Python's built-in logging module.
 Contact
-For any questions, feedback, or issues, please contact the author at [your-email@example.com].
+For any questions, feedback, or issues, please contact the author at [vk2448384@gmail.com].
 
 Thank you for using the User-Friendly System Call Interface! We hope you find it useful.
 
