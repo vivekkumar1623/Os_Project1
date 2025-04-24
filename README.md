@@ -78,10 +78,3 @@ For any questions, feedback, or issues, please contact the author at [vk2448384@
 Thank you for using the User-Friendly System Call Interface! We hope you find it useful.
 
 Run
-
-### Instructions for Use
-
-1. **Replace** `[your-email@example.com]` with your actual email address or contact information.
-2. **Update the GitHub URL** in the clone command to point to your repository if you plan to host it on GitHub.
-3. **Save the file** as `README.md` in the same directory as your Python script.
-4. This README file provides a comprehensive overview of the project, making it easier for users to understand how to use the application and contribute to it.
